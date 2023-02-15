@@ -86,7 +86,7 @@ const questions = [
    quizContainer.style.display = "list-item";
    renderQuestion();
    renderTimer();
- }
+}
 
  // Render the current question
  function renderQuestion() {
@@ -100,4 +100,49 @@ const questions = [
       button.addEventListener("click", selectAnswer);
       answersEl.appendChild(button);
       });
-      }
+}
+// Select an answer and move on to the next question or show the end screen
+function selectAnswer(event) {
+  const selectedAnswer = event.target.textContent;
+    if (selectedAnswer === questions[questionIndex].correctAnswer) {
+    score++;
+    }
+    if (questionIndex === questions.length - 1) {
+    quizContainer.style.display = "none";
+    endContainer.style.display = "block";
+    finalScoreEl.textContent = "Your final score is " + score + " out of " + questions.length;
+    clearInterval(timerInterval);
+    } else {
+    questionIndex++;
+    renderQuestion();
+    }
+  }
+
+  // Render the timer for the quiz
+  function renderTimer() {
+    timerInterval = setInterval(function() {
+    time--;
+    timerEl.textContent = "Time: " + time;
+    if (time <= 0) {
+    quizContainer.style.display = "none";
+    endContainer.style.display = "block";
+    clearInterval(timerInterval);
+    }
+    }, 1000);
+    }
+
+    
+  // Save the high score and initials
+  function saveScore() {
+    const initials = initialsEl.value;
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    const newScore = {
+      score: score,
+      initials: initials
+  };
+  highScores.push(newScore);
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  endContainer.style.display = "none";
+  highScoresContainer.style.display = "block";
+  renderHighScores();
+  }
