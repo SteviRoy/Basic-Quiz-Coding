@@ -1,7 +1,7 @@
 // Initial values for the quiz
 let score = 0;
 let questionIndex = 0;
-let time = questions.length * 15;
+let time = questions.length * 5;
 
 // Elements from the HTML
 const startContainer = document.getElementById("start-container");
@@ -70,3 +70,34 @@ const questions = [
   correctAnswer: "15"
 }
 ];
+
+ // Start the quiz when the start button is clicked
+ startBtn.addEventListener("click", startQuiz);
+  
+ // Save the high score and initials when the save button is clicked
+ saveBtn.addEventListener("click", saveScore);
+ 
+ // Clear the high scores when the clear button is clicked
+ clearBtn.addEventListener("click", clearScores);
+ 
+ // Start the quiz
+ function startQuiz() {
+   startContainer.style.display = "none";
+   quizContainer.style.display = "list-item";
+   renderQuestion();
+   renderTimer();
+ }
+
+ // Render the current question
+ function renderQuestion() {
+  let currentQuestion = questions[questionIndex];
+  questionEl.textContent = currentQuestion.question;
+  answersEl.innerHTML = "";
+  currentQuestion
+  .answers.forEach(answer => {
+      const button = document.createElement("button");
+      button.textContent = answer;
+      button.addEventListener("click", selectAnswer);
+      answersEl.appendChild(button);
+      });
+      }
