@@ -146,3 +146,22 @@ function selectAnswer(event) {
   highScoresContainer.style.display = "block";
   renderHighScores();
   }
+
+  // Render the high scores
+function renderHighScores() {
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  highScores.sort((a, b) => b.score - a.score);
+  highScores.forEach((highScore, index) => {
+  const li = document.createElement("li");
+  li.textContent = (index + 1) + ". " + highScore.initials + " - " + highScore.score;
+  highScoresContainer.appendChild(li);
+  });
+  }
+  
+  // Clear the high scores
+  function clearScores() {
+  localStorage.removeItem("highScores");
+  while (highScoresContainer.firstChild) {
+  highScoresContainer.removeChild(highScoresContainer.firstChild);
+  }
+  }
