@@ -1,0 +1,48 @@
+/* Reset */
+html, body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  /* Basic Styles */
+  body {
+    background-color: #a79898;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+  }
+  
+  main {
+    max-width: 600px;
+    margin: 5em auto;
+    padding: 1em;
+  }
+  
+  button {
+    background-color: #333;
+    color: #fff;
+    border: 10px;
+    padding: 1em 2em;
+    cursor: pointer;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+  
+  /* Mobile Styles */
+  @media only screen and (max-width: 600px) {
+    main {
+      padding: 0.5em;
+    }
+  }
+  
