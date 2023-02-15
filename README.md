@@ -24,3 +24,10 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+
+### The deployed website can be viewed at:
+https://steviroy.github.io/Javascript-Timed-Quiz/
+
+## Screen-shot
+![image](https://user-images.githubusercontent.com/123859262/218912698-b1dec1b7-0266-4f09-8052-cf67f07c2f48.png)
+
